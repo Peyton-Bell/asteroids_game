@@ -17,6 +17,10 @@ def main():
 
     # infinite loop
     while True:
+
+        # calling log state()
+        log_state()
+        
         # processing events in game
         for event in pygame.event.get():
             if event.type == pygame.QUIT:

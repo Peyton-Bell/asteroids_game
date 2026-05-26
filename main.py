@@ -15,12 +15,16 @@ def main():
     # pygame GUI
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
-    # infinite loop
+    # create new clock object
+    clock = pygame.time.Clock()
+    dt = 0.0 # delta time
+
+    # infinite game loop
     while True:
 
         # calling log state()
         log_state()
-        
+
         # processing events in game
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -29,8 +33,14 @@ def main():
         # make screen black
         screen.fill("black")
 
-        # update the display (must be called last)
+        # update the display
         pygame.display.flip()
+
+        # restrict game to 60fps
+        clock.tick(60)
+
+        # calculate delta time
+        dt = clock.tick(60) / 1000
 
 if __name__ == "__main__":
     main()

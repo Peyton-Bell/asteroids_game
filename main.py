@@ -19,7 +19,9 @@ def main():
     while True:
         # processing events in game
         for event in pygame.event.get():
-            pass
+            if event.type == pygame.QUIT:
+                return
+            
         # make screen black
         screen.fill("black")
 

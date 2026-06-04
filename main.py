@@ -40,6 +40,7 @@ def main():
         # draw the player
         player.draw(screen)
 
+        # update position of player(WASD)
         player.update(dt)
 
         # restrict game to 60fps

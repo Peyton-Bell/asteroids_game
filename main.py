@@ -8,6 +8,7 @@ from asteroidfield import AsteroidField
 from logger import log_event
 from circleshape import CircleShape
 import sys
+from shot import Shot
 
 def main():
     # initializing pygame
@@ -29,6 +30,7 @@ def main():
     updatable = pygame.sprite.Group()
     drawable = pygame.sprite.Group()
     asteroids = pygame.sprite.Group()
+    shots = pygame.sprite.Group()
 
     # add groups to Player class
     Player.containers = (updatable, drawable)
@@ -38,6 +40,9 @@ def main():
 
     # add groups to AsteroidField class
     AsteroidField.containers = (updatable)
+
+    # add groups to Shot class
+    Shot.containers = (shots, updatable, drawable)
 
     # Insanitiate AsteroidField Object
     asteroidfield = AsteroidField()

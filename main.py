@@ -3,6 +3,8 @@ from constants import SCREEN_HEIGHT
 from constants import SCREEN_WIDTH
 from logger import log_state
 from player import Player
+from asteroids import Asteroid
+from asteroidfield import AsteroidField
 
 def main():
     # initializing pygame
@@ -20,7 +22,7 @@ def main():
     clock = pygame.time.Clock()
     dt = 0.0 # delta time
 
-    # creating 3 empty groups
+    # create empty groups
     updatable = pygame.sprite.Group()
     drawable = pygame.sprite.Group()
     asteroids = pygame.sprite.Group()
@@ -30,6 +32,12 @@ def main():
 
     # add groups to Asteroid class
     Asteroid.containers = (asteroids, updatable, drawable)
+
+    # add groups to AsteroidField class
+    AsteroidField.containers = (updatable)
+
+    # Insanitiate AsteroidField Object
+    asteroidfield = AsteroidField()
 
     # Insanitiate Player Object
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)

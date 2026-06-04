@@ -1,8 +1,8 @@
 import pygame
-from circleshape import circleshape
+from circleshape import CircleShape
 from constants import LINE_WIDTH
 
-class Asteroid(circleshape):
+class Asteroid(CircleShape):
 
     # constructor
     def __init__(self, x: float, y: float, radius: float) -> None:

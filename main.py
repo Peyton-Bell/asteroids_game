@@ -20,12 +20,16 @@ def main():
     clock = pygame.time.Clock()
     dt = 0.0 # delta time
 
-    # creating 2 empty groups
+    # creating 3 empty groups
     updatable = pygame.sprite.Group()
     drawable = pygame.sprite.Group()
+    asteroids = pygame.sprite.Group()
 
-    # add the groups to Player class
+    # add groups to Player class
     Player.containers = (updatable, drawable)
+
+    # add groups to Asteroid class
+    Asteroid.containers = (asteroids, updatable, drawable)
 
     # Insanitiate Player Object
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)

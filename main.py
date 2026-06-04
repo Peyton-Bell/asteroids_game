@@ -5,6 +5,9 @@ from logger import log_state
 from player import Player
 from asteroids import Asteroid
 from asteroidfield import AsteroidField
+from logger import log_event
+from circleshape import CircleShape
+import sys
 
 def main():
     # initializing pygame
@@ -62,6 +65,13 @@ def main():
         # .draw() each item in the drawable group
         for drawing in drawable:
             drawing.draw(screen)
+
+        for asteroid in asteroids:
+            if asteroid.collides_with(player):
+                log_event("player_hit")
+                print("Game over!")
+                sys.exit()
+
 
         # calculate delta time and restrict game to 60fps
         dt = clock.tick(60) / 1000

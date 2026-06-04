@@ -71,11 +71,21 @@ def main():
         for drawing in drawable:
             drawing.draw(screen)
 
+        # collision check for player and asteroids
         for asteroid in asteroids:
             if asteroid.collides_with(player):
                 log_event("player_hit")
                 print("Game over!")
                 sys.exit()
+
+        #collision check for bullets and asteroids
+        for asteroid in asteroids:
+            for bullet in shots:
+                if bullet.collides_with(asteroid):
+                    log_event("asteroid_shot")
+                    asteroid.kill()
+                    bullet.kill()
+
 
 
         # calculate delta time and restrict game to 60fps

@@ -20,6 +20,13 @@ def main():
     clock = pygame.time.Clock()
     dt = 0.0 # delta time
 
+    # creating 2 empty groups
+    updatable = pygame.sprite.Group()
+    drawable = pygame.sprite.Group()
+
+    # add the groups to Player class
+    Player.containers = (updatable, drawable)
+
     # Insanitiate Player Object
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
 
@@ -37,16 +44,14 @@ def main():
         # make screen black
         screen.fill("black")
 
-        # draw the player
-        player.draw(screen)
+        # calling update on updatable group
+        updatable.update(dt)
 
-        # update position of player(WASD)
-        player.update(dt)
+        # .draw() each item in the drawable group
+        for drawing in drawable:
+            drawing.draw(screen)
 
-        # restrict game to 60fps
-        clock.tick(60)
-
-        # calculate delta time
+        # calculate delta time and restrict game to 60fps
         dt = clock.tick(60) / 1000
 
         # update the display

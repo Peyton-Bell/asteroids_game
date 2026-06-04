@@ -40,6 +40,8 @@ def main():
         # draw the player
         player.draw(screen)
 
+        player.update(dt)
+
         # restrict game to 60fps
         clock.tick(60)
 
